@@ -4,12 +4,14 @@
   "description": "Interfaz con react.js para SiSINTA",
   "main": "index.js",
   "dependencies": {
-    "babel-preset-react": "^6.3.13",
-    "babelify": "^7.2.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "gulp": "^3.9.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
