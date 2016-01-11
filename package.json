@@ -1,0 +1,21 @@
+{
+  "name": "faz",
+  "version": "0.0.1",
+  "description": "Interfaz con react.js para SiSINTA",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/INTA-Suelos/faz.git"
+  },
+  "author": "Mauricio Pasquier Juan <mauricio@pasquierjuan.com.ar>",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/INTA-Suelos/faz/issues"
+  },
+  "homepage": "https://github.com/INTA-Suelos/faz#readme"
+}
