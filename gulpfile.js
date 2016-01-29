@@ -10,4 +10,10 @@ gulp.task('build', () => {
     .pipe(gulp.dest('dev'))
 })
 
-gulp.task('default', ['build'])
+// Copia los estáticos
+gulp.task('copy-static', () => {
+  return gulp.src('src/**/*html')
+    .pipe(gulp.dest('dev'))
+})
+
+gulp.task('default', ['build', 'copy-static'])
