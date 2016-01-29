@@ -1,6 +1,11 @@
 var gulp = require('gulp')
 var babel = require('gulp-babel')
 
+var browserSync = require('browser-sync')
+
+// Todo lo que genera el output en /dev
+gulp.task('build-dev', ['build', 'copy-static'])
+
 // Genera el proyecto para que sea navegable
 gulp.task('build', () => {
   return gulp.src('src/js/**/*.jsx')
@@ -16,4 +21,12 @@ gulp.task('copy-static', () => {
     .pipe(gulp.dest('dev'))
 })
 
-gulp.task('default', ['build', 'copy-static'])
+// Levanta el servidor para los archivos compilados y vigila el directorio
+gulp.task('browser-sync', ['build-dev'], () => {
+  browserSync.init({
+    server: { baseDir: './dev' },
+    files: 'dev/**/*'
+  })
+})
+
+gulp.task('default', ['browser-sync'])
