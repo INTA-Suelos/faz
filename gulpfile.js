@@ -1,4 +1,6 @@
 var gulp = require('gulp')
+var del = require('del')
+var sequence = require('run-sequence')
 
 // Para envolver el stream de browserify y adaptarlo a gulp
 var source = require('vinyl-source-stream')
@@ -39,12 +41,18 @@ gulp.task('copy-static', () => {
     .pipe(gulp.dest('dev'))
 })
 
+gulp.task('clean', () => {
+  return del('dev')
+})
+
 // Levanta el servidor para los archivos compilados y vigila el directorio
-gulp.task('browser-sync', ['build-dev'], () => {
+gulp.task('browser-sync', () => {
   browserSync.init({
     server: { baseDir: './dev' },
     files: 'dev/**/*'
   })
 })
 
-gulp.task('default', ['browser-sync'])
+gulp.task('default', () => {
+  sequence('clean', 'build-dev', 'browser-sync')
+})
