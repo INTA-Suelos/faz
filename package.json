@@ -12,8 +12,10 @@
     "babel-preset-react": "^6.3.13",
     "babelify": "^7.2.0",
     "browser-sync": "^2.11.1",
+    "browserify": "^13.0.0",
     "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.1"
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

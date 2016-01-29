@@ -1,5 +1,11 @@
 var gulp = require('gulp')
-var babel = require('gulp-babel')
+
+// Para envolver el stream de browserify y adaptarlo a gulp
+var source = require('vinyl-source-stream')
+var buffer = require('vinyl-buffer')
+
+var browserify = require('browserify')
+var babel = require('babelify')
 
 var browserSync = require('browser-sync')
 
@@ -8,10 +14,22 @@ gulp.task('build-dev', ['build', 'copy-static'])
 
 // Genera el proyecto para que sea navegable
 gulp.task('build', () => {
-  return gulp.src('src/js/**/*.jsx')
-    .pipe(babel({
-      presets: ['es2015', 'react']
-    }))
+  var bundler = browserify({
+    entries: 'src/js/faz.jsx',
+    debug: true,
+    extensions: ['.jsx'],
+    transform: [
+      babel.configure({ presets: ['es2015', 'react'] })
+    ]
+  })
+
+  return bundler.bundle()
+    // Emite errores sin cortar el stream
+    .on('error', (e) => {
+      console.log(e.toString())
+    })
+    .pipe(source('faz.js'))
+    .pipe(buffer())
     .pipe(gulp.dest('dev'))
 })
 
