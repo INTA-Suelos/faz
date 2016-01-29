@@ -1,5 +1,7 @@
 var gulp = require('gulp')
 
-gulp.task('default', function () {
-  // default task
+// Crea el bundle.js con todo el código final
+gulp.task('build', function() {
 })
+
+gulp.task('default', ['build'])
