@@ -1,7 +1,13 @@
 var gulp = require('gulp')
+var babel = require('gulp-babel')
 
-// Crea el bundle.js con todo el código final
-gulp.task('build', function() {
+// Genera el proyecto para que sea navegable
+gulp.task('build', () => {
+  return gulp.src('src/js/**/*.jsx')
+    .pipe(babel({
+      presets: ['es2015', 'react']
+    }))
+    .pipe(gulp.dest('dev'))
 })
 
 gulp.task('default', ['build'])
