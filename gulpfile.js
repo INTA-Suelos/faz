@@ -1,5 +1,6 @@
 var gulp = require('gulp')
 var sourcemaps = require('gulp-sourcemaps')
+var uglify = require('gulp-uglify')
 var del = require('del')
 var sequence = require('run-sequence')
 
@@ -36,6 +37,7 @@ gulp.task('transpile-js', () => {
     .pipe(buffer())
     // Generar sourcemaps reutilizandolos
     .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify())
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('dev'))
 })
