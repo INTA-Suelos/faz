@@ -1,4 +1,5 @@
 var gulp = require('gulp')
+var sourcemaps = require('gulp-sourcemaps')
 var del = require('del')
 var sequence = require('run-sequence')
 
@@ -12,14 +13,15 @@ var babel = require('babelify')
 var browserSync = require('browser-sync')
 
 // Todo lo que genera el output en /dev
-gulp.task('build-dev', ['build', 'copy-static'])
+gulp.task('build-dev', ['transpile-js', 'copy-static'])
 
 // Genera el proyecto para que sea navegable
-gulp.task('build', () => {
+gulp.task('transpile-js', () => {
   var bundler = browserify({
     entries: 'src/js/faz.jsx',
-    debug: true,
     extensions: ['.jsx'],
+    // Generar sourcemaps
+    debug: true,
     transform: [
       babel.configure({ presets: ['es2015', 'react'] })
     ]
@@ -32,6 +34,9 @@ gulp.task('build', () => {
     })
     .pipe(source('faz.js'))
     .pipe(buffer())
+    // Generar sourcemaps reutilizandolos
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('dev'))
 })
 
