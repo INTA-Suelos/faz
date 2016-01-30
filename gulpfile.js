@@ -21,7 +21,7 @@ var browserSync = require('browser-sync')
 
 // Arranca el entorno de desarrollo
 gulp.task('default', () => {
-  sequence('clean', 'build-dev', 'browser-sync')
+  sequence('clean', 'build-dev', ['browser-sync', 'watch'])
 })
 
 // Genera el proyecto entero en /dev
@@ -55,7 +55,7 @@ gulp.task('transpile-js', () => {
 
 // Copia los estáticos
 gulp.task('copy-static', () => {
-  return gulp.src('src/**/*html')
+  return gulp.src('src/**/*.html')
     .pipe(gulp.dest('dev'))
 })
 
@@ -70,4 +70,10 @@ gulp.task('browser-sync', () => {
     server: { baseDir: './dev' },
     files: 'dev/**/*'
   })
+})
+
+// Vigila los cambios en src y reconstruye
+gulp.task('watch', () => {
+  gulp.watch('src/**/*.html', ['copy-static'])
+  gulp.watch('src/js/**/*.jsx', ['transpile-js'])
 })
