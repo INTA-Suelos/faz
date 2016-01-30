@@ -1,22 +1,33 @@
 var gulp = require('gulp')
 var sourcemaps = require('gulp-sourcemaps')
 var uglify = require('gulp-uglify')
+// Elimina directorios
 var del = require('del')
+// Corre tareas en secuencia
+// TODO Remover con gulp 4
 var sequence = require('run-sequence')
 
-// Para envolver el stream de browserify y adaptarlo a gulp
+// Envuelven el stream de browserify y lo adaptan a gulp
 var source = require('vinyl-source-stream')
 var buffer = require('vinyl-buffer')
 
+// Maneja las dependencias de módulos en el cliente
 var browserify = require('browserify')
+// Transpila a js
 var babel = require('babelify')
 
+// Server de desarrollo con live reload
 var browserSync = require('browser-sync')
 
-// Todo lo que genera el output en /dev
+// Arranca el entorno de desarrollo
+gulp.task('default', () => {
+  sequence('clean', 'build-dev', 'browser-sync')
+})
+
+// Genera el proyecto entero en /dev
 gulp.task('build-dev', ['transpile-js', 'copy-static'])
 
-// Genera el proyecto para que sea navegable
+// Genera los js minificados, con sourcemaps y demás
 gulp.task('transpile-js', () => {
   var bundler = browserify({
     entries: 'src/js/faz.jsx',
@@ -29,7 +40,7 @@ gulp.task('transpile-js', () => {
   })
 
   return bundler.bundle()
-    // Emite errores sin cortar el stream
+    // Emitir errores sin cortar el stream
     .on('error', (e) => {
       console.log(e.toString())
     })
@@ -48,6 +59,7 @@ gulp.task('copy-static', () => {
     .pipe(gulp.dest('dev'))
 })
 
+// Limpia el directorio de output
 gulp.task('clean', () => {
   return del('dev')
 })
@@ -58,8 +70,4 @@ gulp.task('browser-sync', () => {
     server: { baseDir: './dev' },
     files: 'dev/**/*'
   })
-})
-
-gulp.task('default', () => {
-  sequence('clean', 'build-dev', 'browser-sync')
 })
