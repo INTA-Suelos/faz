@@ -4,5 +4,5 @@ import ReactDOM from 'react-dom'
 import App from './components/app'
 
 ReactDOM.render(
-  <App name='SiSINTA' />, document.body
+  <App name='SiSINTA' />, document.getElementById('faz')
 )
