@@ -7,10 +7,10 @@ import Home from './components/home'
 import Perfiles from './components/perfiles'
 
 ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path='/' component={App}>
-      <IndexRoute component={Home} />
-      <Route path='perfiles' component={Perfiles}/>
+  <Router history={ browserHistory }>
+    <Route path="/" component={ App }>
+      <IndexRoute component={ Home } />
+      <Route path="perfiles" component={ Perfiles }/>
     </Route>
   </Router>,
   document.getElementById('faz')
