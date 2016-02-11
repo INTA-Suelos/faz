@@ -7,7 +7,7 @@ import Perfiles from './components/perfiles'
 
 ReactDOM.render(
   <Router history={hashHistory}>
-    <Route path='/' component={App} name="sisinta" />
+    <Route path='/' component={App} />
 
     <Route path='/perfiles' component={Perfiles}/>
   </Router>,
