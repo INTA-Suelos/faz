@@ -18,6 +18,7 @@ var babel = require('babelify')
 
 // Server de desarrollo con live reload
 var browserSync = require('browser-sync')
+var historyFallback = require('connect-history-api-fallback')
 
 // Arranca el entorno de desarrollo
 gulp.task('default', () => {
@@ -67,7 +68,10 @@ gulp.task('clean', () => {
 // Levanta el servidor para los archivos compilados y vigila el directorio
 gulp.task('browser-sync', () => {
   browserSync.init({
-    server: { baseDir: './dev' },
+    server: {
+      baseDir: './dev',
+      middleware: [ historyFallback() ]
+    },
     files: 'dev/**/*'
   })
 })
