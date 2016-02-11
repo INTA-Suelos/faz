@@ -8,7 +8,8 @@ export default class App extends React.Component {
     return(
       <div>
         <Header />
-        El contenido va aquí!
+        { /* Renderiza los hijos que react-router le pasa (las rutas anidadas) */ }
+        { this.props.children }
         <Footer />
       </div>
     )

@@ -7,9 +7,9 @@ import Perfiles from './components/perfiles'
 
 ReactDOM.render(
   <Router history={hashHistory}>
-    <Route path='/' component={App} />
-
-    <Route path='/perfiles' component={Perfiles}/>
+    <Route path='/' component={App}>
+      <Route path='/perfiles' component={Perfiles}/>
+    </Route>
   </Router>,
   document.getElementById('faz')
 )
