@@ -1,8 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Router, Route, hashHistory } from 'react-router'
 
 import App from './components/app'
 
 ReactDOM.render(
-  <App name='SiSINTA' />, document.getElementById('faz')
+  <Router history={hashHistory}>
+    <Route path='/' component={App} name="sisinta" />
+  </Router>,
+  document.getElementById('faz')
 )
