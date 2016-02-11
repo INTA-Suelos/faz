@@ -10,7 +10,7 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route path='/' component={App}>
       <IndexRoute component={Home} />
-      <Route path='/perfiles' component={Perfiles}/>
+      <Route path='perfiles' component={Perfiles}/>
     </Route>
   </Router>,
   document.getElementById('faz')
