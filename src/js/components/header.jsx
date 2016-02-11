@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, IndexLink } from 'react-router'
 
 export default class Header extends React.Component {
   render() {
@@ -7,7 +7,7 @@ export default class Header extends React.Component {
       <div id="header">
         <h1>SiSINTA</h1>
         <ul role="nav">
-          <li><Link to="/">Inicio</Link></li>
+          <li><IndexLink to="/">Inicio</IndexLink></li>
           <li><Link to="/perfiles">Perfiles</Link></li>
         </ul>
       </div>
