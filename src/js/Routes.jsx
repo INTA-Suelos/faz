@@ -1,12 +1,12 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-import App from './Components/App'
-import Portada from './Components/Portada'
-import Perfiles from './Components/Perfiles'
-import Perfil from './Components/Perfil'
+import App from './components/App'
+import Portada from './components/Portada'
+import Perfiles from './components/Perfiles'
+import Perfil from './components/Perfil'
 
-module.exports = (
+export default (
   <Router history={ browserHistory }>
     <Route path="/" component={ App }>
       <IndexRoute component={ Portada } />
