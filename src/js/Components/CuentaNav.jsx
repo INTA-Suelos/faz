@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+const propTypes = {
+  logueado: React.PropTypes.bool.isRequired
+}
+
 const CuentaNav = ({ logueado }) => {
   var registrationLink, loginLink
 
@@ -21,5 +25,7 @@ const CuentaNav = ({ logueado }) => {
     </nav>
   )
 }
+
+CuentaNav.propTypes = propTypes
 
 export default CuentaNav

@@ -6,11 +6,11 @@ import CuentaNav from './CuentaNav'
 
 export default class Header extends React.Component {
   render() {
-    return(
+    return (
       <div id="header">
         <BusquedaNav />
         {/* TODO Sacar el valor real de algún store */}
-        <CuentaNav logueado={true} />
+        <CuentaNav logueado={false} />
 
         <h1>SiSINTA</h1>
         <ul role="nav">
