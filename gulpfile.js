@@ -31,7 +31,7 @@ gulp.task('build-dev', ['transpile-js', 'copy-static'])
 // Genera los js minificados, con sourcemaps y demás
 gulp.task('transpile-js', () => {
   var bundler = browserify({
-    entries: 'src/js/faz.jsx',
+    entries: 'src/js/faz.js',
     extensions: ['.jsx'],
     // Generar sourcemaps
     debug: true,
