@@ -1,10 +1,10 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-import App from './components/app'
-import Home from './components/home'
-import Perfiles from './components/perfiles'
-import Perfil from './components/perfil'
+import App from './Components/App'
+import Home from './Components/Home'
+import Perfiles from './Components/Perfiles'
+import Perfil from './Components/Perfil'
 
 module.exports = (
   <Router history={ browserHistory }>
