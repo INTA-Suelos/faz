@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-export default class Navegacion extends React.Component {
+export default class CuentaNav extends React.Component {
   render() {
     var registrationLink, loginLink
 

@@ -1,14 +1,16 @@
 import React from 'react'
 import { Link, IndexLink } from 'react-router'
 
-import Navegacion from './Navegacion'
+import BusquedaNav from './BusquedaNav'
+import CuentaNav from './CuentaNav'
 
 export default class Header extends React.Component {
   render() {
     return(
       <div id="header">
+        <BusquedaNav />
         {/* TODO Sacar el valor real de algún store */}
-        <Navegacion logueado={true} />
+        <CuentaNav logueado={true} />
 
         <h1>SiSINTA</h1>
         <ul role="nav">
