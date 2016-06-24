@@ -56,7 +56,7 @@ gulp.task('transpile-js', () => {
 
 // Copia los estáticos
 gulp.task('copy-static', () => {
-  return gulp.src('src/**/*.html')
+  return gulp.src(['src/**/*.html', 'src/**/*.png'])
     .pipe(gulp.dest('dev'))
 })
 
@@ -79,6 +79,6 @@ gulp.task('browser-sync', () => {
 
 // Vigila los cambios en src y reconstruye
 gulp.task('watch', () => {
-  gulp.watch('src/**/*.html', ['copy-static'])
+  gulp.watch(['src/**/*.html', 'src/**/*.png'], ['copy-static'])
   gulp.watch('src/js/**/*.jsx', ['transpile-js'])
 })
