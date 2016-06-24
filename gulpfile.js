@@ -73,6 +73,7 @@ gulp.task('browser-sync', () => {
       middleware: [ historyFallback() ]
     },
     port: 3002,
+    browser: process.env.BROWSER_TO_SYNC,
     files: 'dev/**/*'
   })
 })
