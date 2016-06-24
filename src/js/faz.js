@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Routes from './Routes'
+import Root from './containers/Root'
 
-ReactDOM.render(Routes, document.getElementById('faz'))
+ReactDOM.render(Root, document.getElementById('faz'))
