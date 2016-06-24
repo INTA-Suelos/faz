@@ -7,7 +7,6 @@ App
   Content
     - Portada
     - Perfiles
-  Footer
 
 Portada
   Mapa
