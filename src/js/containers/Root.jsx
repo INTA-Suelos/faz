@@ -1,12 +1,20 @@
+/* Contenedor raíz que integra react-router con redux. Funcionalmente es el
+ * bootstrapping de la aplicación. */
 import React from 'react'
 import { Router, browserHistory } from 'react-router'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import thunk from 'redux-thunk'
 
 import rootReducer from '../reducers'
 import Routes from '../routes'
 
-let store = createStore(rootReducer)
+const reduxMiddleware = [thunk]
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(...reduxMiddleware)
+)
 
 export default (
   // Provider envuelve toda la app para que cada container tenga acceso al store
