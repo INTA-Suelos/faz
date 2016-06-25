@@ -1,3 +1,8 @@
+/* Rutas de la aplicación
+ *
+ *   /                 Portada
+ *   /perfiles         PerfilesIndex
+ *   /perfiles/:id     Perfil #id      */
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
