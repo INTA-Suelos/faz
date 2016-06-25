@@ -1,3 +1,4 @@
+/* La vista principal de cada perfil. Equivalente al show del backend. */
 import React from 'react'
 
 export default class Perfil extends React.Component {
@@ -8,7 +9,7 @@ export default class Perfil extends React.Component {
 
   componentDidMount() {
     // Hardcodear por ahora dev
-    fetch(`http://localhost:3000/perfiles/${this.props.params.id}`, {
+    fetch(`http://localhost:3000/api/perfiles/${this.props.params.id}`, {
       mode: 'cors',
       headers: {
        'Accept': 'application/json'
@@ -21,6 +22,7 @@ export default class Perfil extends React.Component {
         })
       },
       () => {
+        // FIXME No llega acá con 403, usa el inicial
         this.setState({ perfil: { numero: 'fallo' } })
       }
     )

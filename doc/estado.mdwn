@@ -1,0 +1,8 @@
+# Árbol de estado
+
+{
+  token: JWT del server,
+  usuario: {
+    nombre, email, id, srid, ficha
+  }
+}

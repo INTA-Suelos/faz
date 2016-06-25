@@ -1,8 +1,10 @@
-import React from 'react'
+/* Links de manejo de cuenta de usuario (login/logout,
+ * registrarse/preferencias). */
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 
 const propTypes = {
-  logueado: React.PropTypes.bool.isRequired
+  logueado: PropTypes.bool.isRequired
 }
 
 const CuentaNav = ({ logueado }) => {

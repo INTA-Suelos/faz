@@ -12,4 +12,6 @@ Portada
   Mapa
 
 Perfiles
-  Perfil
+  - ListaPerfiles
+  - Perfil
+  - Crear/EditarPerfil
