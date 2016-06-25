@@ -1,13 +1,13 @@
 // Reducer principal para redux, donde se combinan todos los reducers para
 // generar un mismo árbol de estado
+import { combineReducers } from 'redux'
 
-const initialState = {
-  token: null,
-  usuario: {}
-}
+import perfil from './perfil'
+import usuario from './usuario'
 
-function rootReducer(state = initialState, action) {
-  return state
-}
+const rootReducer = combineReducers({
+  perfil,
+  usuario
+})
 
 export default rootReducer;
