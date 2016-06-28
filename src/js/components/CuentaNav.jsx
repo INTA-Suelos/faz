@@ -1,5 +1,5 @@
-/* Links de manejo de cuenta de usuario (login/logout,
- * registrarse/preferencias). */
+// Links de manejo de cuenta de usuario (login/logout,
+// registrarse/preferencias).
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 

@@ -1,5 +1,5 @@
-/* Contenedor raíz que integra react-router con redux. Funcionalmente es el
- * bootstrapping de la aplicación. */
+// Contenedor raíz que integra react-router con redux. Funcionalmente es el
+// bootstrapping de la aplicación.
 import React from 'react'
 import { Router, browserHistory } from 'react-router'
 import { createStore, applyMiddleware } from 'redux'

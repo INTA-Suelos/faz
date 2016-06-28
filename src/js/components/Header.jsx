@@ -1,5 +1,5 @@
-/* Header o Encabezado para toda la aplicación. Incluye los links de manejo de
- * cuenta de usuario, una barra de búsqueda y navegación básica. */
+// Header o Encabezado para toda la aplicación. Incluye los links de manejo de
+// cuenta de usuario, una barra de búsqueda y navegación básica.
 import React from 'react'
 import { Link, IndexLink } from 'react-router'
 

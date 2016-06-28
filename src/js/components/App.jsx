@@ -1,5 +1,5 @@
-/* Layout principal para la aplicación. Contiene subcomponentes que son
- * visibles en cada página, como el Header. */
+// Layout principal para la aplicación. Contiene subcomponentes que son
+// visibles en cada página, como el Header.
 import React from 'react'
 
 import Header from './Header'
