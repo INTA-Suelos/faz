@@ -1,8 +1,19 @@
 # Árbol de estado
 
-{
-  token: JWT del server,
-  usuario: {
-    nombre, email, id, srid, ficha
-  }
-}
+Bosquejo del estado global mantenido por `redux`:
+
+    {
+      usuario: {
+        token: JWT del server,
+        datos: {
+          nombre, email, id, srid, ficha
+        }
+      },
+
+      perfiles: {
+        fetching: si estamos haciendo una llamada al backend o no,
+        entities: {
+          una lista de perfiles por id, con sus datos
+        }
+      }
+    }

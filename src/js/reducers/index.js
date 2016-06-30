@@ -2,11 +2,11 @@
 // generar un mismo árbol de estado
 import { combineReducers } from 'redux'
 
-import perfil from './perfil'
+import perfiles from './perfiles'
 import usuario from './usuario'
 
 const rootReducer = combineReducers({
-  perfil,
+  perfiles,
   usuario
 })
 

@@ -1,6 +1,8 @@
+// Resuelve los cambios de estado relacionados con la información del usuario y
+// el token de acceso.
 const initialState = {
-  token: null,
-  usuario: {},
+  token: '',
+  datos: {}
 }
 
 export default function usuario(state = initialState, action) {
