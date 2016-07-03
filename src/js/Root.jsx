@@ -7,11 +7,15 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 
-import rootReducer from '../reducers'
-import Routes from '../routes'
+import rootReducer from './reducers'
+import Routes from './routes'
 
-// TODO Agregar el logger sólo en dev
-const reduxMiddleware = [thunk, createLogger()]
+const reduxMiddleware = [thunk]
+
+// Agregar el logger sólo en dev
+if (process.env.NODE_ENV === 'development') {
+  reduxMiddleware.push(createLogger())
+}
 
 const store = createStore(
   rootReducer,
