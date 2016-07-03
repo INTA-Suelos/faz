@@ -56,10 +56,12 @@ gulp.task('transpile-js', () => {
 
   return bundler.bundle()
     // Emitir errores sin cortar el stream
+    // TODO Esto corta watch, pero las soluciones son muy complejas con gulp 3.
     .on('error', (e) => {
-      console.log(e.toString())
+      gutil.log(e.toString())
     })
     .pipe(source('faz.js'))
+    // Transforma el stream en buffer para gulp-sourcemaps
     .pipe(buffer())
     // Inyecta variables de entorno en el build
     .pipe(envify({ NODE_ENV: process.env.NODE_ENV }))
