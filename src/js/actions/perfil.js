@@ -11,6 +11,7 @@ export function fetchPerfil(perfil) {
   // acción normal.
   return function (dispatch, getState) {
     // Cortar la acción si ya estamos fetcheando
+    // FIXME Testear si funciona
     if (getState().fetching) {
       return Promise.resolve()
     }

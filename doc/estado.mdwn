@@ -13,7 +13,27 @@ Bosquejo del estado global mantenido por `redux`:
       perfiles: {
         fetching: si estamos haciendo una llamada al backend o no,
         entities: {
-          una lista de perfiles por id, con sus datos
+          1: {
+            // una lista de perfiles por id, con sus datos
+            id: 1,
+            numero: 'un perfil'
+          }
+        }
+        paginacion: {
+          // primer key es filas
+          10: {
+            // segunda key es página
+            1: [ array de ids ],
+            2: [ array de ids ]
+          }
+          20: {
+            1: [ array de ids ],
+            2: [ array de ids ]
+          }
+          50: {
+            1: [ array de ids ],
+            2: [ array de ids ]
+          }
         }
       }
     }

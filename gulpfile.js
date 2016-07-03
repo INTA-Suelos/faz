@@ -50,7 +50,11 @@ gulp.task('transpile-js', () => {
     // Generar sourcemaps si el entorno es desarrollo
     debug: process.env.NODE_ENV === 'development',
     transform: [
-      babel.configure({ presets: ['es2015', 'react'] })
+      babel.configure({
+        presets: ['es2015', 'react'],
+        // Permite usar { ...s, n } en vez de Object.assign({}, s, n)
+        plugins: ['transform-object-rest-spread']
+      })
     ]
   })
 
