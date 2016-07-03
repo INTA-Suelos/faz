@@ -1,0 +1,17 @@
+# Componentes visuales
+
+App
+  Header
+    BusquedaNav
+    CuentaNav
+  Content
+    - Portada
+    - Perfiles
+
+Portada
+  Mapa
+
+Perfiles
+  - ListaPerfiles
+  - Perfil
+  - Crear/EditarPerfil

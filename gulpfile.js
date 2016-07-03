@@ -1,11 +1,16 @@
 var gulp = require('gulp')
+var gutil = require('gulp-util')
+// Genera sourcemaps de los streams de gulp
 var sourcemaps = require('gulp-sourcemaps')
+// Permite que browserify inyecte variables de entorno en el build
+var envify = require('gulp-envify')
 var uglify = require('gulp-uglify')
 // Elimina directorios
 var del = require('del')
 // Corre tareas en secuencia
 // TODO Remover con gulp 4
 var sequence = require('run-sequence')
+var gulpif = require('gulp-if')
 
 // Envuelven el stream de browserify y lo adaptan a gulp
 var source = require('vinyl-source-stream')
@@ -20,21 +25,30 @@ var babel = require('babelify')
 var browserSync = require('browser-sync')
 var historyFallback = require('connect-history-api-fallback')
 
-// Arranca el entorno de desarrollo
-gulp.task('default', () => {
-  sequence('clean', 'build-dev', ['browser-sync', 'watch'])
+// Por default arrancar a desarrollar (con el entorno definido afuera)
+gulp.task('default', ['run'])
+
+gulp.task('run', () => {
+  gutil.log(`Arrancando en modo: ${process.env.NODE_ENV}`)
+  sequence('clean', 'build', ['browser-sync', 'watch'])
+})
+
+// Sólo compila
+gulp.task('dist', () => {
+  gutil.log(`Compilando en modo: ${process.env.NODE_ENV}`)
+  sequence('clean', 'build')
 })
 
 // Genera el proyecto entero en /dev
-gulp.task('build-dev', ['transpile-js', 'copy-static'])
+gulp.task('build', ['transpile-js', 'copy-static'])
 
-// Genera los js minificados, con sourcemaps y demás
+// Genera js según NODE_ENV
 gulp.task('transpile-js', () => {
   var bundler = browserify({
     entries: 'src/js/faz.js',
-    extensions: ['.jsx'],
-    // Generar sourcemaps
-    debug: true,
+    extensions: ['.jsx', 'js'],
+    // Generar sourcemaps si el entorno es desarrollo
+    debug: process.env.NODE_ENV === 'development',
     transform: [
       babel.configure({ presets: ['es2015', 'react'] })
     ]
@@ -47,16 +61,21 @@ gulp.task('transpile-js', () => {
     })
     .pipe(source('faz.js'))
     .pipe(buffer())
-    // Generar sourcemaps reutilizandolos
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('maps'))
+    // Inyecta variables de entorno en el build
+    .pipe(envify({ NODE_ENV: process.env.NODE_ENV }))
+    // Genera sourcemaps reutilizandolos de browserify (debug: true) si el
+    // entorno es desarrollo
+    .pipe(gulpif(process.env.NODE_ENV === 'development',
+      sourcemaps.init({ loadMaps: true }))
+        .pipe(sourcemaps.write('maps')))
+    // Sólo uglificar si el entorno es producción
+    .pipe(gulpif(process.env.NODE_ENV === 'production', uglify()))
     .pipe(gulp.dest('dev'))
 })
 
 // Copia los estáticos
 gulp.task('copy-static', () => {
-  return gulp.src('src/**/*.html')
+  return gulp.src(['src/**/*.html', 'src/**/*.png'])
     .pipe(gulp.dest('dev'))
 })
 
@@ -73,12 +92,13 @@ gulp.task('browser-sync', () => {
       middleware: [ historyFallback() ]
     },
     port: 3002,
+    browser: process.env.BROWSER_TO_SYNC,
     files: 'dev/**/*'
   })
 })
 
 // Vigila los cambios en src y reconstruye
 gulp.task('watch', () => {
-  gulp.watch('src/**/*.html', ['copy-static'])
-  gulp.watch('src/js/**/*.jsx', ['transpile-js'])
+  gulp.watch(['src/**/*.html', 'src/**/*.png'], ['copy-static'])
+  gulp.watch('src/js/**/*.js*', ['transpile-js'])
 })

@@ -1,0 +1,27 @@
+# Flujo de la aplicación
+
+## `/`
+
+Estamos en la `Portada`.
+
+## `/perfiles`
+
+Clickeamos en "Perfiles". `react-router` encuentra qué componentes montar y le
+pasa los parámetros como props (`props.params`). En el caso inicial no hay,
+pero podría haber un `location.query` con, por ejemplo, `filas=50&pagina=2`.
+
+El router monta al container de perfiles (`PerfilesIndex`), y en su
+`componentWillMount()` dispara el thunk `loadOrFetchPerfiles` (para encontrar
+la página adecuada en el server o en el store). Si es necesario, esta acción
+dispara `fetchPerfiles`, que hace el fetch al server, y a su vez dispara
+`REQUEST_PERFILES` para habilitar un spinner o similar. Cuando termina, dispara
+`REQUEST_PERFILES_SUCCESS` o `REQUEST_PERFILES_FAILURE` según el caso. Entonces
+terminamos con una lista de perfiles con links e ids.
+
+## `/perfiles/:id`
+
+Clickeamos en el "Perfil 3". `react-router` le pasa el `:id` como props
+PerfilShow y lo monta. Cuando éste se monta, dispara `loadOrFetchPerfil` con
+el id, que busca en el store y si no está, dispara `fetchPerfiles` que busca en
+el server. Ésta última dispara las acciones de flujo de datos `REQUEST_PERFIL`
+con sus correspondientes `_SUCCESS` y `_FAILURE`.

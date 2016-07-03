@@ -1,0 +1,46 @@
+# Estilos básicos
+
+## Comentarios
+
+Usamos `//` siempre que sea posible
+
+    // Descripción de
+    // varias
+    // líneas
+
+Usamos `/* ... */` para comentarios dentro del JSX
+
+    <div>
+      <Header />
+      { /* Renderiza las rutas anidadas) */ }
+      { this.props.children }
+    </div>
+
+# Patrones
+
+## Extraer propiedades de un objeto
+
+Dado un objeto con esta forma:
+
+    objeto: {
+      nombre_prop1: 'un valor',
+      nombre_prop2: 'otro valor',
+      nombre_prop3: 'un valor sin interés'
+    }
+
+podemos extraer sólo las propiedades que nos importan (y de paso documentarlo)
+así:
+
+    const { nombre_prop1, nombre_prop2 } = objeto
+
+Esta extracción automática también se puede usar cuando `objeto` es el
+parámetro que recibimos en una función. Podemos escribir
+
+    const Perfil = (params) => {
+      const { id, numero } = params
+
+como
+
+    const Perfil = ({ id, numero }) => {
+
+y eliminar un poco de boilerplate manteniendo lo explícito de las propiedades.
