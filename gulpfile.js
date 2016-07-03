@@ -32,7 +32,7 @@ gulp.task('build-dev', ['transpile-js', 'copy-static'])
 gulp.task('transpile-js', () => {
   var bundler = browserify({
     entries: 'src/js/faz.js',
-    extensions: ['.jsx'],
+    extensions: ['.jsx', 'js'],
     // Generar sourcemaps
     debug: true,
     transform: [
@@ -81,5 +81,5 @@ gulp.task('browser-sync', () => {
 // Vigila los cambios en src y reconstruye
 gulp.task('watch', () => {
   gulp.watch(['src/**/*.html', 'src/**/*.png'], ['copy-static'])
-  gulp.watch('src/js/**/*.jsx', ['transpile-js'])
+  gulp.watch('src/js/**/*.js*', ['transpile-js'])
 })
