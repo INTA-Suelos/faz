@@ -11,7 +11,7 @@ export function fetchPerfiles(filas, pagina) {
   // acción normal.
   return function (dispatch, getState) {
     // Cortar la acción si ya estamos fetcheando
-    if (getState().fetching) {
+    if (getState().perfiles.fetching) {
       return Promise.resolve()
     }
 
