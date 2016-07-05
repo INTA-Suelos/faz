@@ -19,10 +19,9 @@ class PerfilShow extends React.Component {
   }
 }
 
-// TODO Usar un selector (con reselect) para filtrar el state a las propiedades
-// indispensables
 const mapStateToProps = (state, ownProps) => {
   const { entities } = state.perfiles
+
   return {
     perfil: entities[ownProps.params.id]
   }
