@@ -1,4 +1,4 @@
-# Estilos básicos
+# Básicos
 
 ## Comentarios
 
@@ -15,8 +15,6 @@ Usamos `/* ... */` para comentarios dentro del JSX
       { /* Renderiza las rutas anidadas) */ }
       { this.props.children }
     </div>
-
-# Patrones
 
 ## Extraer propiedades de un objeto
 
@@ -44,3 +42,10 @@ como
     const Perfil = ({ id, numero }) => {
 
 y eliminar un poco de boilerplate manteniendo lo explícito de las propiedades.
+
+# Prácticas de Redux
+
+Envolvemos los Componentes visuales (en `src/js/components`) dentro de un Container
+(en `src/js/containers`), que resuelve el estado en `props` y genera callbacks con
+`dispatch` para abstraer al componente visual de todo lo relacionado con
+Redux.
