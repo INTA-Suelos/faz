@@ -20,19 +20,15 @@ Bosquejo del estado global mantenido por `redux`:
           }
         }
         paginacion: {
-          // primer key es filas
-          10: {
-            // segunda key es página
-            1: [ array de ids ],
-            2: [ array de ids ]
-          }
-          20: {
-            1: [ array de ids ],
-            2: [ array de ids ]
-          }
-          50: {
-            1: [ array de ids ],
-            2: [ array de ids ]
+          // Consideramos que cada fila es una query, que usamos como key. De
+          // paso sirve para paginar búsquedas y filtros. En la implementación
+          // actual el orden de los parámetros importa, pero debería ser suficiente
+          '?pagina=1&filas=20': [ array de ids ],
+          '?pagina=2&filas=20': [ array de ids ],
+          '?pagina=3&filas=20': [ array de ids ],
+          '?pagina=1&filas=50': [ array de ids ],
+          '?pagina=2&filas=50': [ array de ids ],
+          '?pagina=3&filas=50': [ array de ids ]
           }
         }
       }

@@ -12,11 +12,7 @@ const initialState = {
   fetching: false,
   error: false,
   entities: {},
-  paginacion: {
-    20: {
-      1: []
-    }
-  }
+  paginacion: {}
 }
 
 // Reducer combinado para las acciones de perfiles en general
@@ -64,9 +60,7 @@ const paginacion = (state, action) => {
   switch (action.type) {
     case REQUEST_PERFILES_SUCCESS:
       return { ...state,
-        [action.filas]: {
-          [action.pagina]: action.perfiles.map(perfil => perfil.id)
-        }
+        [action.search]: action.perfiles.map(perfil => perfil.id)
       }
     default:
       return state

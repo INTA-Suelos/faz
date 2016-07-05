@@ -2,6 +2,7 @@
 // index del backend. Puede ser paginado, o no.
 import React from 'react'
 import { connect } from 'react-redux'
+import { Set, Map, OrderedMap } from 'immutable'
 
 import { loadOrFetchPerfiles } from '../actions/perfiles'
 import ListaPerfiles from '../components/ListaPerfiles'
@@ -20,9 +21,9 @@ class PerfilIndex extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   // Query tiene la información de paginación, filtrado y demás. Si no, usamos
   // defaults
-  const { filas = 20, pagina = 1 } = ownProps.location.query
+  const { search } = ownProps.location
   const { entities, paginacion } = state.perfiles
-  const perfiles = paginacion && paginacion[filas] && paginacion[filas][pagina] || []
+  const perfiles = paginacion && paginacion[search] || []
 
   return {
     perfiles: perfiles.map(id => entities[id])
@@ -30,11 +31,11 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const { filas = 20, pagina = 1 } = ownProps.location.query
+  const { search } = ownProps.location
 
   return {
     load: () => {
-      dispatch(loadOrFetchPerfiles(filas, pagina))
+      dispatch(loadOrFetchPerfiles(search))
     }
   }
 }
