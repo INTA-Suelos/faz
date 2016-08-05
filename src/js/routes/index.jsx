@@ -6,7 +6,7 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
-import App from '../components/App'
+import App from '../containers/App'
 import Portada from '../components/Portada'
 import PerfilesIndex from '../containers/PerfilesIndex'
 import PerfilShow from '../containers/PerfilShow'
