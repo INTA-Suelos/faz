@@ -2,7 +2,6 @@
 // index del backend. Puede ser paginado, o no.
 import React from 'react'
 import { connect } from 'react-redux'
-import { Set, Map, OrderedMap } from 'immutable'
 
 import { loadOrFetchPerfiles } from '../actions/perfiles'
 import ListaPerfiles from '../components/ListaPerfiles'
