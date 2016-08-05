@@ -1,10 +1,11 @@
 // Layout principal para la aplicación. Contiene subcomponentes que son
 // visibles en cada página, como el Header.
 import React from 'react'
+import { connect } from 'react-redux'
 
 import Header from './Header'
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return(
       <div>
@@ -16,3 +17,11 @@ export default class App extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  const { children } = ownProps
+
+  return { children }
+}
+
+export default connect(mapStateToProps)(App)
