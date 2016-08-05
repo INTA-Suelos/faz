@@ -46,11 +46,14 @@ const entities = (state, action) => {
       return { ...state, [action.id]: action.perfil }
     // Si la acción devuelve varios perfil, los mapeamos al store
     case REQUEST_PERFILES_SUCCESS:
-      perfiles = action.perfiles.reduce((hash, perfil) => {
+      // TODO Generalizar extracción de jsonapi
+      const { perfiles } = action.perfiles
+
+      const perfilesPorId = perfiles.reduce((hash, perfil) => {
         return { ...hash, [perfil.id]: perfil }
       }, {})
 
-      return { ...state, ...perfiles }
+      return { ...state, ...perfilesPorId }
     default:
       return state
   }
@@ -59,8 +62,11 @@ const entities = (state, action) => {
 const paginacion = (state, action) => {
   switch (action.type) {
     case REQUEST_PERFILES_SUCCESS:
+      // TODO Generalizar extracción de jsonapi
+      const { perfiles } = action.perfiles
+
       return { ...state,
-        [action.search]: action.perfiles.map(perfil => perfil.id)
+        [action.search]: perfiles.map(perfil => perfil.id)
       }
     default:
       return state
