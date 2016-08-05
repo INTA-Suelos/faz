@@ -2,6 +2,7 @@
 // el token de acceso.
 const initialState = {
   token: '',
+  logueado: false,
   datos: {}
 }
 

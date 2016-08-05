@@ -5,6 +5,7 @@ Bosquejo del estado global mantenido por `redux`:
     {
       usuario: {
         token: JWT del server,
+        logueado: true,
         datos: {
           nombre, email, id, srid, ficha
         }
