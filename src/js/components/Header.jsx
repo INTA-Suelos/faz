@@ -14,7 +14,7 @@ const Header = ({ logueado }) => {
   return (
     <div id="header">
       <BusquedaNav />
-      {/* TODO Sacar el valor real de algún store */}
+
       <CuentaNav logueado={ logueado } />
 
       <h1>SiSINTA</h1>

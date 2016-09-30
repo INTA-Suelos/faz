@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <Header logueado={ true }/>
+        <Header logueado={ this.props.logueado }/>
 
         { /* Contenido. Renderiza los hijos que react-router le pasa (las rutas anidadas) */ }
         { this.props.children }
