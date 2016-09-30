@@ -1,4 +1,5 @@
-// Tipos de acciones escuchables
+// Acciones del ciclo de vida para buscar una página (definida en forma de
+// búsqueda o `search`) de perfiles
 export const REQUEST_PERFILES = 'REQUEST_PERFILES'
 export const REQUEST_PERFILES_SUCCESS = 'REQUEST_PERFILES_SUCCESS'
 export const REQUEST_PERFILES_FAILURE = 'REQUEST_PERFILES_FAILURE'
