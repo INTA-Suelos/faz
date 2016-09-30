@@ -3,8 +3,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { loadOrFetchPerfil } from '../actions/perfil'
 import Perfil from '../components/Perfil'
+import { loadOrFetchPerfil } from '../actions/perfil'
 
 // Componente envuelto por Redux para acceder al store. Sólo renderiza el
 // componente visual Perfil
