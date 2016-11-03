@@ -16,7 +16,7 @@ const ListaPerfiles = ({ perfiles }) => {
         perfiles.map(
           ({ id, numero }) =>
             <li key={ id }>
-              <Link to={`/perfiles/${id}`}>{`Perfil ${numero}`}</Link>
+              <Link to={`/perfiles/${id}`}>{`Perfil ${numero || id}`}</Link>
             </li>
         )
       }</ul>

@@ -1,4 +1,4 @@
-// Tipos de acciones escuchables
+// Acciones del ciclo de vida para buscar un perfil específico por id
 export const REQUEST_PERFIL = 'REQUEST_PERFIL'
 export const REQUEST_PERFIL_SUCCESS = 'REQUEST_PERFIL_SUCCESS'
 export const REQUEST_PERFIL_FAILURE = 'REQUEST_PERFIL_FAILURE'

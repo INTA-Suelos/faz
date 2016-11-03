@@ -1,5 +1,9 @@
 # Básicos
 
+## Comillas
+
+Preferentemente simples en el código js, dobles en jsx.
+
 ## Comentarios
 
 Usamos `//` siempre que sea posible

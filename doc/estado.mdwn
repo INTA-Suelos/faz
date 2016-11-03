@@ -3,10 +3,12 @@
 Bosquejo del estado global mantenido por `redux`:
 
     {
-      usuario: {
+      sesion: {
         token: JWT del server,
-        datos: {
-          nombre, email, id, srid, ficha
+        fetching: si estamos haciendo una llamada al backend o no,
+        logueado: true,
+        usuario: {
+          nombre, email, srid, ficha
         }
       },
 

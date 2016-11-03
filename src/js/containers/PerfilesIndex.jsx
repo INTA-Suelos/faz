@@ -3,8 +3,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { loadOrFetchPerfiles } from '../actions/perfiles'
 import ListaPerfiles from '../components/ListaPerfiles'
+import { loadOrFetchPerfiles } from '../actions/perfiles'
 
 class PerfilIndex extends React.Component {
   componentWillMount() {
