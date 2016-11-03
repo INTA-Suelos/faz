@@ -31,6 +31,7 @@ export function login(credenciales) {
       .then(response => response.json())
       // Notificar a la app que el request terminó exitosamente, agregando el
       // resultado como payload de la acción.
+      // https://stackoverflow.com/questions/24662289/when-is-thensuccess-fail-considered-an-antipattern-for-promises?noredirect=1&lq=1
       .then(
         json => dispatch(requestLoginSuccess(json)),
         err => dispatch(requestLoginFailure(credenciales, err))
